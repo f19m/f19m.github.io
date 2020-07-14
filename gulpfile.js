@@ -9,7 +9,7 @@ const {src, dest, series, watch} = require('gulp'),
     concat = require('gulp-concat'),  // объединяет файлы в один бандл
     minifyCSS = require('gulp-minify-css'),  // сжимает, оптимизирует
     rename = require("gulp-rename"),
-    uglify = require('gulp-uglify-es'),
+    uglify = require('gulp-uglify-es').default,
     autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] }),
     babel = require('gulp-babel'); 
 
@@ -36,7 +36,9 @@ function _less(){
 function _js(){
     return src('src/js/script.js')
    // .pipe(babel({  presets: ['@babel/preset-env']  }))
-    //.pipe(uglify())
+   .pipe(uglify({
+        mangle: {toplevel: true}
+    }))
     .pipe(dest('dst/js')) 
 }
 
