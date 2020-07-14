@@ -28,7 +28,10 @@ function createEventTemplate (obj){
                 </span>
             </div>
       </div>
-      <div class="event_info__text">${obj.city}</div>`
+      <div class="event_info__text">${obj.city}</div>
+      <div class="event_info__cover">
+            <img src="${obj.image}" alt="" />
+      </div>`
     );
   };
 
@@ -53,7 +56,7 @@ class EventList {
             el.classList.add('events_box__event');
             el.classList.add('event_info');
             el.id='event-'+event.id;
-            el.style.backgroundImage=`url(${event.image})`;
+          
 
             this._container.appendChild(el);
         });
@@ -61,7 +64,7 @@ class EventList {
 
     doFilter(city, month){
         this.clearList();
-        let arr=this._eventList.filter(obj => ((obj.city==dataCity[city] && city > 0  || city==0 ) && (obj.month==month && month > 0  || month==0 )));
+        let arr=this._eventList.filter(obj => ((obj.city==dataCity[city] && city > 0  || city==0 ) && (obj.month ==month && month > 0  || month==0 )));
         this.addItems(arr);
     }
    
@@ -119,5 +122,5 @@ comboMonth.addEventListener('change', event =>{
 
 
 window.addEventListener('DOMContentLoaded', function(){
-    send_req();
+   send_req();
  });
