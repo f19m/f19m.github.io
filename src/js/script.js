@@ -58,7 +58,7 @@ class EventList {
   }
 
 function send_req(){
-    console.log('send_req');
+ 
     let req = new XMLHttpRequest();
 
     req.open('GET', 'data/events.json')
@@ -68,7 +68,7 @@ function send_req(){
     req.addEventListener('readystatechange', function(){
         if (req.readyState === 4 && req.status == 200){
             dataEvent = JSON.parse(req.response);
-            console.log(dataEvent);
+       
             
             let citySet = new Set();
             citySet.add('All');
@@ -85,7 +85,7 @@ function send_req(){
             fillCombo(comboMonth, dataMonth);
 
             eventList = new EventList(eventsBox, dataEvent);
-            console.log('eventList='+eventList);
+      
         }
     });
 }
