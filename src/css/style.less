@@ -265,6 +265,9 @@ body {
 
 .events_box__event:nth-last-child(-n+2){
     margin-bottom: 0;
+    @media(max-width: @old-device){
+        margin: 0 0 20px 0;
+    }
 }
 
 .event_info {
@@ -305,7 +308,7 @@ display: flex;
     @media(max-width: @small-device){
         width: 40px;
         height: 40px;
-        padding: 0px;
+        padding: 3px 2px 2px 6px;
     }
   
 }

@@ -320,6 +320,11 @@ body {
 .events_box__event:nth-last-child(-n+2) {
   margin-bottom: 0;
 }
+@media (max-width: 1024px) {
+  .events_box__event:nth-last-child(-n+2) {
+    margin: 0 0 20px 0;
+  }
+}
 .event_info {
   padding: 40px 41px 42px 40px;
 }
@@ -365,7 +370,7 @@ body {
   .info_head__date {
     width: 40px;
     height: 40px;
-    padding: 0px;
+    padding: 3px 2px 2px 6px;
   }
 }
 .info_head__save {
