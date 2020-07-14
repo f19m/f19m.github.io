@@ -82,7 +82,6 @@ body {
 .event-listing-holder {
   max-width: 1600px;
   min-width: 320px;
-  min-height: 1378px;
   background-color: #F0F3FF;
   padding: 80px;
 }
@@ -282,31 +281,44 @@ body {
     flex: 0 1 100%;
   }
 }
+/*
+.events_box__event:nth-child(2n+1){
+    margin: 40px 40px 0 0;
+    @media(max-width: @small-device){
+        margin: 0 0 20px 0;
+    }
+    @media(max-width: @old-device){
+        margin: 0 0 20px 0;
+    }
+}
+.events_box__event:nth-child(-n+2){
+    margin-top: 20px;
+    @media(max-width: @small-device){
+        margin: 0 0 20px 0;
+    }
+    @media(max-width: @old-device){
+        margin: 0 0 20px 0;
+    }
+}
+*/
 .events_box__event:nth-child(2n+1) {
-  margin: 0 40px 40px 0;
-}
-@media (max-width: 425px) {
-  .events_box__event:nth-child(2n+1) {
-    margin: 0 0 20px 0;
-  }
+  margin: 20px 20px 20px 0;
 }
 @media (max-width: 1024px) {
   .events_box__event:nth-child(2n+1) {
     margin: 0 0 20px 0;
   }
 }
-.events_box__event:nth-child(-n+2) {
-  margin-top: 0;
-}
-@media (max-width: 425px) {
-  .events_box__event:nth-child(-n+2) {
-    margin: 0 0 20px 0;
-  }
+.events_box__event:nth-child(2n) {
+  margin: 20px 0 20px 20px;
 }
 @media (max-width: 1024px) {
-  .events_box__event:nth-child(-n+2) {
+  .events_box__event:nth-child(2n) {
     margin: 0 0 20px 0;
   }
+}
+.events_box__event:nth-last-child(-n+2) {
+  margin-bottom: 0;
 }
 .event_info {
   padding: 40px 41px 42px 40px;

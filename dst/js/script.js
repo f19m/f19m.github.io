@@ -12,8 +12,6 @@ let comboCity=document.querySelector('#filter_city'),
 function createEventTemplate (obj){
     let dtArr= obj.date.split('.'),
         dt = new Date(dtArr[1]+'/'+dtArr[0]+'/'+dtArr[2]);
-   
-
     return (
     `  <div class="event_info__header info_head">
             <div class="info_head__date">
@@ -38,10 +36,9 @@ function createEventTemplate (obj){
 
 class EventList {
     constructor(container, eventList) {
-     
-      this._eventList = eventList;
-      this._container = container;
-      this.addItems(eventList);
+        this._container = container;
+        this.clearList();
+        this.addItems(eventList);
     }
     
     clearList(){
@@ -49,26 +46,15 @@ class EventList {
     }
     
     addItems(eventList){
-        this.clearList();
         eventList.forEach(event => {
             const el = document.createElement('div');
             el.innerHTML=createEventTemplate(event);
             el.classList.add('events_box__event');
             el.classList.add('event_info');
             el.id='event-'+event.id;
-          
-
             this._container.appendChild(el);
         });
     }
-
-    doFilter(city, month){
-        this.clearList();
-        let arr=this._eventList.filter(obj => ((obj.city==dataCity[city] && city > 0  || city==0 ) && (obj.month ==month && month > 0  || month==0 )));
-        this.addItems(arr);
-    }
-   
-
   }
 
 function send_req(){
@@ -110,15 +96,21 @@ function fillCombo(elem, data){
 
 
 
+function doFilter(city, month){
+    let filtredArr=dataEvent.filter(obj => ((obj.city==dataCity[city] && city > 0  || city==0 ) && (obj.month ==month && month > 0  || month==0 )));
+    eventList.clearList();
+    eventList.addItems(filtredArr);
+};
+
 comboCity.addEventListener('change', event =>{
     let idx = event.target.value;
-    eventList.doFilter(idx, comboMonth.selectedIndex)
-})
+    doFilter(idx, comboMonth[comboMonth.selectedIndex].value)
+});
 
 comboMonth.addEventListener('change', event =>{
     let idx = event.target.value;
-    eventList.doFilter(comboCity.selectedIndex, idx)
-})
+    doFilter(comboCity[comboCity.selectedIndex].value, idx)
+});
 
 
 window.addEventListener('DOMContentLoaded', function(){
